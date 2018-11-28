@@ -5,7 +5,13 @@ package metodos;
  * @author _
  */
 public class Inversa {
-    
+
+    private static boolean e = true;
+
+    public boolean isFactible() {
+        return e;
+    }
+
     /**
      * Obtiene la determinante de una matriz
      *
@@ -105,16 +111,21 @@ public class Inversa {
      */
     public static double[][] inversa(double[][] matriz) {
         double det = determinante(matriz, 0);
-        double[][] adjunta = adjunta(matriz);
-        double[][] transpuesta = transpuesta(adjunta);
-        double[][] inversa = new double[matriz.length][matriz.length];
-        for (int i = 0; i < inversa.length; i++) {
-            for (int j = 0; j < inversa.length; j++) {
-                inversa[i][j] = transpuesta[i][j] / det;
-            }
+        if (det == 0) {
+            e = false;
+            return matriz;
+        } else {
+            double[][] adjunta = adjunta(matriz);
+            double[][] transpuesta = transpuesta(adjunta);
+            double[][] inversa = new double[matriz.length][matriz.length];
+            for (int i = 0; i < inversa.length; i++) {
+                for (int j = 0; j < inversa.length; j++) {
+                    inversa[i][j] = transpuesta[i][j] / det;
+                }
 
+            }
+            return inversa;
         }
-        return inversa;
     }
 
     /**
@@ -131,6 +142,12 @@ public class Inversa {
                 x[i] += inversa[i][j] * b[j];
             }
         }
+        return x;
+    }
+
+    public double[] solve(double[][] A, double[] b) {
+        double[][] inversa = inversa(A);
+        double[] x = solucion(inversa, b);
         return x;
     }
 }

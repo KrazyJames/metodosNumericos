@@ -46,9 +46,10 @@ public class controller {
 
     }
 
-    public void mostrarResultado(JTable tbl, int metodo) {
+    public void mostrarResultado(JTable tbl, int metodo, String error) {
         resultado r = new resultado();
         DefaultTableModel modeloT = (DefaultTableModel) tbl.getModel();
+        DefaultListModel modelo = new DefaultListModel();
         int n = tbl.getModel().getRowCount();
         double[][] A = new double[n][n];
         double[] b = new double[n];
@@ -67,32 +68,81 @@ public class controller {
                         JOptionPane.showMessageDialog(null, "La matriz es singular o casi singular", "Atencion", JOptionPane.WARNING_MESSAGE);
                         break;
                     }
-                    DefaultListModel modelo = new DefaultListModel();
                     for (int i = 0; i < x.length; i++) {
                         modelo.addElement(x[i]);
                     }
                     r.listResultados.setModel(modelo);
                     r.setVisible(true);
-                }catch(Exception E){
+                } catch (Exception E) {
                     System.out.println(E.getMessage());
                 }
                 break;
             }
             case 1: {
-
+                try {
+                    Jordan gj = new Jordan(A, b);
+                    if (gj.hasError()) {
+                        JOptionPane.showMessageDialog(null, "La matriz es singular o casi singular", "Atencion", JOptionPane.WARNING_MESSAGE);
+                        break;
+                    } else {
+                        if (gj.isFactible()) {
+                            double[] x = gj.primal();
+                            for (int i = 0; i < x.length; i++) {
+                                modelo.addElement(x[i]);
+                            }
+                            r.listResultados.setModel(modelo);
+                            r.setVisible(true);
+                        } else {
+                            double[] y = gj.dual();
+                            String contenido = "";
+                            for (int j = 0; j < y.length; j++) {
+                                contenido += y[j] + "\n";
+                            }
+                            JOptionPane.showMessageDialog(null, contenido, "Comprobacion de infactibilidad", JOptionPane.INFORMATION_MESSAGE);
+                            break;
+                        }
+                    }
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
                 break;
             }
             case 2: {
-
+                try {
+                    Inversa i = new Inversa();
+                    double[] x = i.solve(A, b);
+                    if (i.isFactible()) {
+                        for (int j = 0; j < x.length; j++) {
+                            modelo.addElement(x[j]);
+                        }
+                        r.listResultados.setModel(modelo);
+                        r.setVisible(true);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Determinante es 0, no tiene solucion aparente", "Aviso", JOptionPane.WARNING_MESSAGE);
+                    }
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
                 break;
             }
             case 3: {
+                try {
+                    Seidel s = new Seidel();
+                    if (s.hasConvergencia(A)) {
+                        s.seidel(Double.parseDouble(error), A, b);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Podria no tener convergencia\n Asegurese que sea diagonal dominante o pruebe con otra.","Informacion",JOptionPane.INFORMATION_MESSAGE);
+                        break;
+                    }
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
 
                 break;
             }
             default:
                 System.out.println("Inserte el metodo");
         }
-        
+
     }
 }

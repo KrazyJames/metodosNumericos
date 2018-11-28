@@ -3,7 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/KJ/NetBeansProjects/metodosNumericos/src/controller/controller.java</file>
+            <file>file:/Users/jaime/NetBeansProjects/metodosNumericos/src/vistas/vista.java</file>
+            <file>file:/Users/jaime/NetBeansProjects/metodosNumericos/src/vistas/tabla.java</file>
+            <file>file:/Users/jaime/NetBeansProjects/metodosNumericos/src/metodos/Jordan.java</file>
+            <file>file:/Users/jaime/NetBeansProjects/metodosNumericos/src/controller/controller.java</file>
+            <file>file:/Users/jaime/NetBeansProjects/metodosNumericos/src/metodos/Inversa.java</file>
         </group>
     </open-files>
 </project-private>

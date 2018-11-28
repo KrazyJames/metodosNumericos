@@ -10,12 +10,7 @@ public class Jordan {
     private final double[][] a;
     private static double[] sol;
     private static final double EPSILON = 1e-10;
-
-    public double[] gaussJordan(double[][]A, double[]b){
-        sol = new double[b.length];
-        probar(A,b);
-        return sol;
-    }
+    private boolean e = false;
     
     /**
      *
@@ -56,9 +51,9 @@ public class Jordan {
                 }
             }
             swap(p, max);
-            if (Math.abs(a[p][p]) <= EPSILON) {
-                System.out.println("Matriz singular o casi singular");
-                continue;
+            if (Math.abs(a[p][p]) < EPSILON) {
+                e = true;
+                break;
             }
             pivot(p, p);
         }
@@ -198,28 +193,32 @@ public class Jordan {
             return true;
         }
     }
+//
+//    /**
+//     * Prueba si es factible antes de resolver
+//     *
+//     * @param A Matriz
+//     * @param b constantes
+//     */
+//    public static void probar(double[][] A, double[] b) {
+//        Jordan gj = new Jordan(A, b);
+//        if (gj.isFactible()) {
+//            System.out.println("Solucion para Ax=b");
+//            double[] x = gj.primal();
+//            for (int i = 0; i < x.length; i++) {
+//                sol[i] = x[i];
+//            }
+//        } else {
+//            System.out.println("Comprobación de infactibilidad");
+//            double[] y = gj.dual();
+//            for (int j = 0; j < y.length; j++) {
+//                System.out.println(" " + y[j] + "\n");
+//            }
+//        }
+//    }
 
-    /**
-     * Prueba si es factible antes de resolver
-     *
-     * @param A Matriz
-     * @param b constantes
-     */
-    public static void probar(double[][] A, double[] b) {
-        Jordan gj = new Jordan(A, b);
-        if (gj.isFactible()) {
-            System.out.println("Solucion para Ax=b");
-            double[] x = gj.primal();
-            for (int i = 0; i < x.length; i++) {
-                sol[i] = x[i];
-            }
-        } else {
-            System.out.println("Comprobación de infactibilidad");
-            double[] y = gj.dual();
-            for (int j = 0; j < y.length; j++) {
-                System.out.println(" " + y[j] + "\n");
-            }
-        }
+    public boolean hasError() {
+        return e;
     }
 
 }

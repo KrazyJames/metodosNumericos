@@ -107,8 +107,7 @@ public class Seidel {
      * @return el error
      */
     public static double getErrorPorcentual(double p, double p2) {
-        double error;
-        error = Math.abs((p - p2) / p) * 100;
+        double error = Math.abs((p - p2) / p) * 100;
         return error;
     }
 

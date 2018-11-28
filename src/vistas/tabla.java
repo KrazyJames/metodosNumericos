@@ -9,15 +9,26 @@ import controller.controller;
 public class tabla extends javax.swing.JFrame {
 
     private int m;
+
     /**
      * Creates new form tabla
      */
     public tabla() {
         initComponents();
+        setLocationRelativeTo(null);
     }
-    
-    public void setMetodo(int m){
+
+    public void setMetodo(int m) {
         this.m = m;
+        if (m == 3) {
+            this.lblError.setVisible(true);
+            this.lblPorcentaje.setVisible(true);
+            this.txtError.setVisible(true);
+        } else {
+            this.lblError.setVisible(false);
+            this.lblPorcentaje.setVisible(false);
+            this.txtError.setVisible(false);
+        }
     }
 
     /**
@@ -33,12 +44,18 @@ public class tabla extends javax.swing.JFrame {
         btnCalcular = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblMatriz = new javax.swing.JTable();
+        lblError = new javax.swing.JLabel();
+        txtError = new javax.swing.JTextField();
+        lblPorcentaje = new javax.swing.JLabel();
+        btnCancel = new javax.swing.JButton();
 
         jRadioButtonMenuItem1.setSelected(true);
         jRadioButtonMenuItem1.setText("jRadioButtonMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Matriz");
+        setUndecorated(true);
+        setResizable(false);
 
         btnCalcular.setText("Calcular");
         btnCalcular.addActionListener(new java.awt.event.ActionListener() {
@@ -70,19 +87,43 @@ public class tabla extends javax.swing.JFrame {
             tblMatriz.getColumnModel().getColumn(3).setResizable(false);
         }
 
+        lblError.setLabelFor(txtError);
+        lblError.setText("Error:");
+
+        txtError.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtErrorActionPerformed(evt);
+            }
+        });
+
+        lblPorcentaje.setText("%");
+
+        btnCancel.setText("Cancelar");
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(22, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnCalcular)
-                        .addGap(164, 164, 164))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblError)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtError, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblPorcentaje)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnCancel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnCalcular))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -90,7 +131,12 @@ public class tabla extends javax.swing.JFrame {
                 .addGap(31, 31, 31)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnCalcular)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCalcular)
+                    .addComponent(lblError)
+                    .addComponent(txtError, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPorcentaje)
+                    .addComponent(btnCancel))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
@@ -100,8 +146,16 @@ public class tabla extends javax.swing.JFrame {
     private void btnCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularActionPerformed
         int metodo = this.m;
         controller c = new controller();
-        c.mostrarResultado(tblMatriz,metodo);
+        c.mostrarResultado(tblMatriz, metodo, this.txtError.getText());
     }//GEN-LAST:event_btnCalcularActionPerformed
+
+    private void txtErrorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtErrorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtErrorActionPerformed
+
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnCancelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -140,8 +194,12 @@ public class tabla extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCalcular;
+    private javax.swing.JButton btnCancel;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblError;
+    private javax.swing.JLabel lblPorcentaje;
     public static javax.swing.JTable tblMatriz;
+    private javax.swing.JTextField txtError;
     // End of variables declaration//GEN-END:variables
 }
