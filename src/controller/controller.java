@@ -4,7 +4,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import metodos.Gauss;
+import metodos.*;
 import vistas.resultado;
 
 /**
