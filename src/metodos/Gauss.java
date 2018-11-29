@@ -5,17 +5,21 @@ package metodos;
  * @author _
  */
 public class Gauss {
-    
+
+    private static final double EPSILON = 1e-10;
     private boolean e = false;
+
+    public boolean hasError() {
+        return e;
+    }
+    
     /**
-     * Resuelve por eliminación de Gauss
-     *
-     * @param A la matriz
-     * @param b el vector de independientes
-     * @return el vector resuelto
+     * Resuelve por gauss
+     * @param A la matriz a resolver
+     * @param b las constantes
+     * @return la solucion en vector
      */
     public double[] gauss(double[][] A, double[] b) {
-        double E = 1e-10;
         int n = b.length;
         for (int p = 0; p < n; p++) {
             //Encontrar pivote y cambiar
@@ -33,9 +37,8 @@ public class Gauss {
             b[p] = b[max];
             b[max] = temp2;
             //Singular o no
-            if (Math.abs(A[p][p]) <= E) {
+            if (Math.abs(A[p][p]) <= EPSILON) {
                 e = true;
-                break;
             }
             //Pivote en A y b
             for (int i = p + 1; i < n; i++) {
@@ -56,9 +59,5 @@ public class Gauss {
             x[i] = (b[i] - sum) / A[i][i];
         }
         return x;
-    }
-    
-    public boolean hasError(){
-        return this.e;
     }
 }
