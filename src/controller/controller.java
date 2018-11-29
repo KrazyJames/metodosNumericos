@@ -118,7 +118,7 @@ public class controller {
                         r.listResultados.setModel(modelo);
                         r.setVisible(true);
                     } else {
-                        JOptionPane.showMessageDialog(null, "Determinante es 0, no tiene solucion aparente", "Aviso", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Determinante es 0\n No tiene solucion aparente", "Aviso", JOptionPane.WARNING_MESSAGE);
                     }
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
