@@ -10,12 +10,12 @@ import javax.swing.JTextField;
  */
 public class ControllerSec {
 
-    public void solve(String text, JTextField txtRaiz, double e, double x0, double x1) {
+    public void solve(String ecuacion, JTextField txtRaiz, double x0, double x1, double error) {
         String sol;
-        Funcion f = new Funcion(text);
-        Secante s = new Secante();
-        int i =20;
-        sol = String.valueOf(s.raiz(f, x0, x1, i, e));
+        Funcion funcion = new Funcion(ecuacion);
+        Secante secante = new Secante();
+        sol = String.valueOf(secante.raiz(funcion, x0, x1, error));
+        txtRaiz.setText("");
         txtRaiz.setText(sol);
     }
     
