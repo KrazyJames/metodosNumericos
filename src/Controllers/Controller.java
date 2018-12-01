@@ -143,14 +143,6 @@ public class Controller {
 
                 break;
             }
-            case 4: {
-                try {
-                    
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                }
-                break;
-            }
             default:
                 System.out.println("Inserte el metodo");
         }

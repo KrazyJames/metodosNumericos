@@ -29,7 +29,7 @@ public class Seidel {
     }
 
     /**
-     * Obtiene un sistema diagonalmente dominante
+     * Obtiene un sistema diagonalmente dominante (No funciona al 100% = Mejorar)
      *
      * @param A la matriz
      * @return la matriz diagonalmente dominante

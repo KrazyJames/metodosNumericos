@@ -10,6 +10,15 @@ import javax.swing.JTextField;
  */
 public class ControllerSec {
 
+    /**
+     * Resuelve por metodo de secante
+     *
+     * @param ecuacion la ecuacion
+     * @param txtRaiz el textfield
+     * @param x0 intervalo inferior
+     * @param x1 intervalo superior
+     * @param error el error permitido (0-100)
+     */
     public void solve(String ecuacion, JTextField txtRaiz, double x0, double x1, double error) {
         String sol;
         Funcion funcion = new Funcion(ecuacion);
@@ -18,5 +27,5 @@ public class ControllerSec {
         txtRaiz.setText("");
         txtRaiz.setText(sol);
     }
-    
+
 }

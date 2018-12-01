@@ -6,11 +6,19 @@ package Metodos;
  */
 public class Secante {
 
+    /**
+     * Obtiene la raiz de una ecuacion dada
+     *
+     * @param f la ecuacion
+     * @param x0 el intervalo menor
+     * @param x1 el intervalo mayor
+     * @param error el error (0-100)
+     * @return la raiz
+     */
     public double raiz(Funcion f, double x0, double x1, double error) {
         double raiz;
         double x2 = 0;
         int k = 0;
-        int i = 20;
         double e = 100;
         while (e > error) {
             x2 = x1 - f.evaluate(x1) * (x1 - x0) / (f.evaluate(x1) - f.evaluate(x0));

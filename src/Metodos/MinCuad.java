@@ -6,6 +6,12 @@ package Metodos;
  */
 public class MinCuad {
 
+    /**
+     * Resuleve por minimos cuadrados
+     * @param x la posicion
+     * @param y el vector
+     * @return la Y en la posicion X
+     */
     public double getY(int x, double[]y){
         double r = 0;
         int n = y.length;

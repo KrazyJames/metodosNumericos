@@ -8,12 +8,16 @@ public class Inversa {
 
     private static boolean e = true;
 
+    /**
+     *
+     * @return si es factible
+     */
     public boolean isFactible() {
         return e;
     }
 
     /**
-     * Obtiene la determinante de una matriz
+     * Obtiene la determinante de una matriz (No funciona, mejorar)
      *
      * @param matriz la matriz
      * @param i la posición
@@ -129,7 +133,7 @@ public class Inversa {
     }
 
     /**
-     * Multiplica por inversion de matrices
+     * Multiplica por la inversa y b para obtener la solucion
      *
      * @param inversa
      * @param b
@@ -145,6 +149,12 @@ public class Inversa {
         return x;
     }
 
+    /**
+     * Devuelve el resultado
+     * @param A la matriz
+     * @param b las constantes
+     * @return la solucion
+     */
     public double[] solve(double[][] A, double[] b) {
         double[][] inversa = inversa(A);
         double[] x = solucion(inversa, b);
