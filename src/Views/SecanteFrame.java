@@ -48,6 +48,7 @@ public class SecanteFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Secante");
+        setBackground(new java.awt.Color(0, 0, 0));
         setUndecorated(true);
         setResizable(false);
 
@@ -62,7 +63,7 @@ public class SecanteFrame extends javax.swing.JFrame {
 
         lblRaiz.setText("Raiz:");
 
-        jLabel2.setText("Intervalo;");
+        jLabel2.setText("Intervalo:");
 
         jLabel3.setText("Error:");
 
@@ -98,9 +99,10 @@ public class SecanteFrame extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(txtIntervalo1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(txtError)))
-                            .addGroup(layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGap(20, 20, 20)
                                 .addComponent(txtClose)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnCalcular))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(165, 165, 165)

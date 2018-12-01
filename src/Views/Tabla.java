@@ -57,12 +57,17 @@ public class Tabla extends javax.swing.JFrame {
         setUndecorated(true);
         setResizable(false);
 
+        btnCalcular.setBackground(new java.awt.Color(0, 153, 0));
+        btnCalcular.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnCalcular.setForeground(new java.awt.Color(0, 0, 0));
         btnCalcular.setText("Calcular");
         btnCalcular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCalcularActionPerformed(evt);
             }
         });
+
+        jScrollPane2.setForeground(new java.awt.Color(0, 0, 0));
 
         tblMatriz.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -87,17 +92,27 @@ public class Tabla extends javax.swing.JFrame {
             tblMatriz.getColumnModel().getColumn(3).setResizable(false);
         }
 
+        lblError.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        lblError.setForeground(new java.awt.Color(0, 0, 0));
         lblError.setLabelFor(txtError);
         lblError.setText("Error:");
 
+        txtError.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        txtError.setForeground(new java.awt.Color(0, 0, 0));
+        txtError.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txtError.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtErrorActionPerformed(evt);
             }
         });
 
+        lblPorcentaje.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        lblPorcentaje.setForeground(new java.awt.Color(0, 0, 0));
         lblPorcentaje.setText("%");
 
+        btnCancel.setBackground(new java.awt.Color(204, 0, 0));
+        btnCancel.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnCancel.setForeground(new java.awt.Color(0, 0, 0));
         btnCancel.setText("Cancelar");
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,19 +125,22 @@ public class Tabla extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(22, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(22, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(56, 56, 56)
                         .addComponent(lblError)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtError, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblPorcentaje)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(36, 36, 36)
                         .addComponent(btnCancel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnCalcular))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(btnCalcular)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(26, 26, 26))
         );
         layout.setVerticalGroup(
@@ -137,7 +155,7 @@ public class Tabla extends javax.swing.JFrame {
                     .addComponent(txtError, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblPorcentaje)
                     .addComponent(btnCancel))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         pack();

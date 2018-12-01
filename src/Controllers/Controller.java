@@ -16,6 +16,11 @@ import Views.Resultado;
  */
 public class Controller {
 
+    /**
+     * Crea la tabla dependiendo el tamaño dado
+     * @param tabla la tabla
+     * @param n el tamaño
+     */
     public void crearTabla(javax.swing.JTable tabla, int n) {
         n = n + 2;
         DefaultTableModel m = (DefaultTableModel) tabla.getModel();
@@ -34,7 +39,6 @@ public class Controller {
             } else {
                 titles[i] = "X" + (i + 1);
             }
-
         }
         tabla.setModel(new javax.swing.table.DefaultTableModel(matriz, titles) {
             Class[] types = new Class[]{
@@ -46,7 +50,6 @@ public class Controller {
                 return types[columnIndex];
             }
         });
-
     }
 
     public void mostrarResultado(JTable tbl, int metodo, String error) {

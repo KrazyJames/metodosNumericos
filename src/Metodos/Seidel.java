@@ -6,13 +6,23 @@ package Metodos;
  */
 public class Seidel {
 
+    int iteraciones;
+        
+    public void setIteraciones(int i){
+        this.iteraciones = i;
+    }
+    
+    public int getIteracions(){
+        return iteraciones;
+    }
+    
     /**
      * Comprueba si tiene convergencia
      *
      * @param A la matriz
      * @return si es convergente
      */
-    public static boolean hasConvergencia(double[][] A) {
+    public boolean hasConvergencia(double[][] A) {
         for (int i = 0; i < A.length; i++) {
             double diagonal = Math.abs(A[i][i]);
             double suma = 0;
@@ -34,7 +44,7 @@ public class Seidel {
      * @param A la matriz
      * @return la matriz diagonalmente dominante
      */
-    public static double[][] getDiagonalDominante(double[][] A) {
+    public double[][] getDiagonalDominante(double[][] A) {
         double[][] dominante = new double[A.length][A.length];
         for (int i = 0; i < A.length; i++) {
             for (int j = 0; j < A.length; j++) {
@@ -58,7 +68,7 @@ public class Seidel {
      * @param b el vector
      * @return la solución
      */
-    public static double[] seidel(double precision, double[][] A, double[] b) {
+    public double[] seidel(double precision, double[][] A, double[] b) {
         double[] x = zeros(new double[b.length]);
         double[] z = zeros(new double[x.length]);
         double[] e = zeros(new double[b.length]);
@@ -95,7 +105,7 @@ public class Seidel {
             }
 //            imprimirIteracion(c, x, e);
         }
-        System.out.println("Iteraciones: " + c);
+        setIteraciones(c);
         return x;
     }
 
@@ -106,7 +116,7 @@ public class Seidel {
      * @param p2 parametro secundario
      * @return el error
      */
-    public static double getErrorPorcentual(double p, double p2) {
+    public double getErrorPorcentual(double p, double p2) {
         double error = Math.abs((p - p2) / p) * 100;
         return error;
     }
@@ -117,7 +127,7 @@ public class Seidel {
      * @param v el vector
      * @return el vector relleno
      */
-    public static double[] zeros(double[] v) {
+    public double[] zeros(double[] v) {
         for (int i = 0; i < v.length; i++) {
             v[i] = 0;
         }
