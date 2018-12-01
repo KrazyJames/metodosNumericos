@@ -6,8 +6,8 @@ package Metodos;
  */
 public class test {
     public static void main(String[] args) {
-        Funcion f = new Funcion("sin(x)*x");
+        Funcion f = new Funcion("sin(x)+cos(x)-1.1");
         Secante s = new Secante();
-        System.out.println(s.raiz(f, 3, 4, 100, 1e-10));
+        s.raiz(f, 0, 1, 1);
     }
 }
