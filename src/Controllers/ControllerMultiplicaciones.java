@@ -62,7 +62,7 @@ public class ControllerMultiplicaciones {
 
     public double[][] rellenarMatriz(double[][] A, DefaultTableModel m) {
         for (int i = 0; i < A.length; i++) {
-            for (int j = 0; j < A.length; j++) {
+            for (int j = 0; j < A[0].length; j++) {
                 A[i][j] = Double.parseDouble(String.valueOf(m.getValueAt(i, j)));
             }
         }
