@@ -39,12 +39,13 @@ public class Home extends javax.swing.JFrame {
         setUndecorated(true);
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(153, 0, 153));
+        jPanel1.setBackground(new java.awt.Color(102, 0, 102));
 
         jPanel2.setBackground(new java.awt.Color(51, 0, 51));
 
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Seleccione");
+        jLabel3.setText("Home");
 
         btnCerrar.setBackground(new java.awt.Color(153, 0, 0));
         btnCerrar.setForeground(new java.awt.Color(255, 255, 255));
@@ -78,7 +79,7 @@ public class Home extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        btnMultiplicacion.setBackground(new java.awt.Color(51, 0, 153));
+        btnMultiplicacion.setBackground(new java.awt.Color(153, 0, 153));
         btnMultiplicacion.setForeground(new java.awt.Color(255, 255, 255));
         btnMultiplicacion.setText("Multiplicación de matrices");
         btnMultiplicacion.setBorder(null);
@@ -89,7 +90,7 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        btnMenu.setBackground(new java.awt.Color(0, 51, 102));
+        btnMenu.setBackground(new java.awt.Color(153, 0, 153));
         btnMenu.setForeground(new java.awt.Color(255, 255, 255));
         btnMenu.setText("Obtención de raíces");
         btnMenu.setBorder(null);
