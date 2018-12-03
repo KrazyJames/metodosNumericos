@@ -20,14 +20,26 @@ public class Tabla extends javax.swing.JFrame {
 
     public void setMetodo(int m) {
         this.m = m;
-        if (m == 3) {
-            this.lblError.setVisible(true);
-            this.lblPorcentaje.setVisible(true);
-            this.txtError.setVisible(true);
-        } else {
-            this.lblError.setVisible(false);
-            this.lblPorcentaje.setVisible(false);
-            this.txtError.setVisible(false);
+        switch (m) {
+            case 0:{
+                this.lblTitulo.setText("Eliminación de Gauss");
+                break;
+            }
+            case 1:{
+                this.lblTitulo.setText("Gauss Jordan");
+                break;
+            }
+            case 2:{
+                this.lblTitulo.setText("Inversas (Determinantes)");
+                break;
+            }
+            case 3:{
+                this.lblTitulo.setText("Gauss Seidel");
+                this.txtError.setEditable(true);
+                break;
+            }
+            default:
+                this.lblTitulo.setText("Titulo");
         }
     }
 
@@ -41,13 +53,16 @@ public class Tabla extends javax.swing.JFrame {
     private void initComponents() {
 
         jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
+        jPanel1 = new javax.swing.JPanel();
         btnCalcular = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblMatriz = new javax.swing.JTable();
         lblError = new javax.swing.JLabel();
         txtError = new javax.swing.JTextField();
         lblPorcentaje = new javax.swing.JLabel();
-        btnCancel = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        lblTitulo = new javax.swing.JLabel();
+        btnCerrar = new javax.swing.JButton();
 
         jRadioButtonMenuItem1.setSelected(true);
         jRadioButtonMenuItem1.setText("jRadioButtonMenuItem1");
@@ -57,10 +72,12 @@ public class Tabla extends javax.swing.JFrame {
         setUndecorated(true);
         setResizable(false);
 
+        jPanel1.setBackground(new java.awt.Color(102, 0, 102));
+
         btnCalcular.setBackground(new java.awt.Color(0, 153, 0));
-        btnCalcular.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnCalcular.setForeground(new java.awt.Color(0, 0, 0));
+        btnCalcular.setForeground(new java.awt.Color(255, 255, 255));
         btnCalcular.setText("Calcular");
+        btnCalcular.setBorder(null);
         btnCalcular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCalcularActionPerformed(evt);
@@ -69,6 +86,9 @@ public class Tabla extends javax.swing.JFrame {
 
         jScrollPane2.setForeground(new java.awt.Color(0, 0, 0));
 
+        tblMatriz.setBackground(new java.awt.Color(153, 0, 153));
+        tblMatriz.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        tblMatriz.setForeground(new java.awt.Color(255, 255, 255));
         tblMatriz.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -85,6 +105,11 @@ public class Tabla extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
+        tblMatriz.setGridColor(new java.awt.Color(255, 255, 255));
+        tblMatriz.setRowHeight(25);
+        tblMatriz.setSelectionBackground(new java.awt.Color(102, 0, 102));
+        tblMatriz.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        tblMatriz.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(tblMatriz);
         if (tblMatriz.getColumnModel().getColumnCount() > 0) {
             tblMatriz.getColumnModel().getColumn(0).setResizable(false);
@@ -92,70 +117,113 @@ public class Tabla extends javax.swing.JFrame {
             tblMatriz.getColumnModel().getColumn(3).setResizable(false);
         }
 
-        lblError.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        lblError.setForeground(new java.awt.Color(0, 0, 0));
+        lblError.setForeground(new java.awt.Color(255, 255, 255));
         lblError.setLabelFor(txtError);
         lblError.setText("Error:");
 
-        txtError.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        txtError.setForeground(new java.awt.Color(0, 0, 0));
-        txtError.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtError.setEditable(false);
+        txtError.setBackground(new java.awt.Color(153, 0, 153));
+        txtError.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        txtError.setForeground(new java.awt.Color(255, 255, 255));
+        txtError.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtError.setToolTipText("Disponible para Gauss Seidel");
+        txtError.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(51, 0, 51)));
+        txtError.setSelectedTextColor(new java.awt.Color(255, 255, 255));
+        txtError.setSelectionColor(new java.awt.Color(204, 0, 204));
         txtError.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtErrorActionPerformed(evt);
             }
         });
 
-        lblPorcentaje.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        lblPorcentaje.setForeground(new java.awt.Color(0, 0, 0));
+        lblPorcentaje.setForeground(new java.awt.Color(255, 255, 255));
         lblPorcentaje.setText("%");
 
-        btnCancel.setBackground(new java.awt.Color(204, 0, 0));
-        btnCancel.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnCancel.setForeground(new java.awt.Color(0, 0, 0));
-        btnCancel.setText("Cancelar");
-        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+        jPanel2.setBackground(new java.awt.Color(51, 0, 51));
+
+        lblTitulo.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
+        lblTitulo.setText("Mínimos Cuadrados");
+
+        btnCerrar.setBackground(new java.awt.Color(153, 0, 0));
+        btnCerrar.setForeground(new java.awt.Color(255, 255, 255));
+        btnCerrar.setText("X");
+        btnCerrar.setBorder(null);
+        btnCerrar.setBorderPainted(false);
+        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelActionPerformed(evt);
+                btnCerrarActionPerformed(evt);
             }
         });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
+                .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
+                    .addComponent(btnCalcular, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblError)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtError, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblPorcentaje)
+                .addGap(132, 132, 132))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblError)
+                    .addComponent(txtError, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPorcentaje))
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addComponent(btnCalcular, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(25, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(22, Short.MAX_VALUE)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(56, 56, 56)
-                        .addComponent(lblError)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtError, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblPorcentaje)
-                        .addGap(36, 36, 36)
-                        .addComponent(btnCancel)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnCalcular)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(26, 26, 26))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCalcular)
-                    .addComponent(lblError)
-                    .addComponent(txtError, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPorcentaje)
-                    .addComponent(btnCancel))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -164,16 +232,17 @@ public class Tabla extends javax.swing.JFrame {
     private void btnCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularActionPerformed
         int metodo = this.m;
         Controller c = new Controller();
-        c.mostrarResultado(tblMatriz, metodo, this.txtError.getText());
+        Detalles d = new Detalles();
+        c.mostrarResultado(tblMatriz, metodo, this.txtError.getText(), lblTitulo, d.tblDetalle);
     }//GEN-LAST:event_btnCalcularActionPerformed
 
     private void txtErrorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtErrorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtErrorActionPerformed
 
-    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+    private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
         this.dispose();
-    }//GEN-LAST:event_btnCancelActionPerformed
+    }//GEN-LAST:event_btnCerrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -213,11 +282,14 @@ public class Tabla extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCalcular;
-    private javax.swing.JButton btnCancel;
+    private javax.swing.JButton btnCerrar;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblError;
     private javax.swing.JLabel lblPorcentaje;
+    public javax.swing.JLabel lblTitulo;
     public static javax.swing.JTable tblMatriz;
     private javax.swing.JTextField txtError;
     // End of variables declaration//GEN-END:variables

@@ -9,6 +9,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import Views.Resultado;
+import java.awt.HeadlessException;
+import javax.swing.JLabel;
 
 /**
  *
@@ -18,6 +20,7 @@ public class Controller {
 
     /**
      * Crea la tabla dependiendo el tamaño dado
+     *
      * @param tabla la tabla
      * @param n el tamaño
      */
@@ -52,7 +55,7 @@ public class Controller {
         });
     }
 
-    public void mostrarResultado(JTable tbl, int metodo, String error) {
+    public void mostrarResultado(JTable tbl, int metodo, String error, JLabel titulo, JTable detalles) {
         Resultado r = new Resultado();
         DefaultTableModel modeloT = (DefaultTableModel) tbl.getModel();
         DefaultListModel modelo = new DefaultListModel();
@@ -79,7 +82,7 @@ public class Controller {
                     }
                     r.listResultados.setModel(modelo);
                     r.setVisible(true);
-                } catch (Exception e) {
+                } catch (HeadlessException e) {
                     System.out.println(e.getMessage());
                 }
                 break;
@@ -108,7 +111,7 @@ public class Controller {
                             break;
                         }
                     }
-                } catch (Exception e) {
+                } catch (HeadlessException e) {
                     System.out.println(e.getMessage());
                 }
                 break;
@@ -126,7 +129,7 @@ public class Controller {
                     } else {
                         JOptionPane.showMessageDialog(null, "Determinante es 0\n>No tiene solucion aparente", "Aviso", JOptionPane.WARNING_MESSAGE);
                     }
-                } catch (Exception e) {
+                } catch (HeadlessException e) {
                     System.out.println(e.getMessage());
                 }
                 break;
@@ -135,12 +138,18 @@ public class Controller {
                 try {
                     Seidel s = new Seidel();
                     if (s.hasConvergencia(A)) {
-                        s.seidel(Double.parseDouble(error), A, b);
+                        double[] x = s.seidel(Double.parseDouble(error), A, b);
+                        for (int i = 0; i < x.length; i++) {
+                            modelo.addElement(x[i]);
+                        }
+                        r.setDetalles(s, x);
+                        r.listResultados.setModel(modelo);
+                        r.setVisible(true);
                     } else {
-                        JOptionPane.showMessageDialog(null, "Podria no tener convergencia\n Asegurese que sea diagonal dominante o pruebe con otra.","Informacion",JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Podria no tener convergencia\n Asegurese que sea diagonal dominante o pruebe con otra.", "Informacion", JOptionPane.INFORMATION_MESSAGE);
                         break;
                     }
-                } catch (Exception e) {
+                } catch (HeadlessException | NumberFormatException e) {
                     System.out.println(e.getMessage());
                 }
 
@@ -150,5 +159,46 @@ public class Controller {
                 System.out.println("Inserte el metodo");
         }
 
+    }
+
+    public void verDetalles(JTable detalles, Seidel s, double[]x) {
+        DefaultTableModel model = (DefaultTableModel) detalles.getModel();
+        model.setNumRows(0);
+        int col = (x.length * 2) + 1;
+        model.setColumnCount(0);
+        model.setColumnCount(col);
+        String[] titles = new String[col];
+        for (int i = 0; i < titles.length; i++) {
+            if (i == 0) {
+                titles[i] = "Iteración";
+            } else if (i <= x.length) {
+                titles[i] = "X" + i;
+            } else if (i > x.length) {
+                titles[i] = "Error de X" + (i - x.length);
+            }
+        }
+        Object[][] matriz = new Object[s.getIteraciones()][col];
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz[0].length; j++) {
+                if (j == 0) {
+                    matriz[i][j] = String.valueOf(s.getArrayIteraciones().get(i).getIteracion());
+                } else if (j <= x.length) {
+                    double[] xs = s.getArrayIteraciones().get(i).getX();
+                    matriz[i][j] = String.valueOf(xs[j-1]);
+                } else if (j > x.length) {
+                    double[] e = s.getArrayIteraciones().get(i).getErrores();
+                    matriz[i][j] = String.valueOf(e[j-x.length-1]);
+                }
+            }
+        }
+        detalles.setModel(new javax.swing.table.DefaultTableModel(matriz, titles) {
+            Class[] types = new Class[]{
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            @Override
+            public Class getColumnClass(int columnIndex) {
+                return types[columnIndex];
+            }
+        });
     }
 }

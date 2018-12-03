@@ -1,5 +1,8 @@
 package Metodos;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author _
@@ -7,15 +10,20 @@ package Metodos;
 public class Seidel {
 
     int iteraciones;
-        
-    public void setIteraciones(int i){
+    List<IteracionSeidel> iteracionesArray = new ArrayList<>();
+
+    public List<IteracionSeidel> getArrayIteraciones(){
+        return iteracionesArray;
+    }
+    
+    public void setIteraciones(int i) {
         this.iteraciones = i;
     }
-    
-    public int getIteracions(){
+
+    public int getIteraciones() {
         return iteraciones;
     }
-    
+
     /**
      * Comprueba si tiene convergencia
      *
@@ -39,7 +47,8 @@ public class Seidel {
     }
 
     /**
-     * Obtiene un sistema diagonalmente dominante (No funciona al 100% = Mejorar)
+     * Obtiene un sistema diagonalmente dominante (No funciona al 100% =
+     * Mejorar)
      *
      * @param A la matriz
      * @return la matriz diagonalmente dominante
@@ -104,6 +113,13 @@ public class Seidel {
                 z[i] = x[i];
             }
 //            imprimirIteracion(c, x, e);
+            double[] xs = new double[x.length];
+            double[] es = new double[e.length];
+            for (int i = 0; i < xs.length; i++) {
+                xs[i] = x[i];
+                es[i] = e[i];
+            }
+            iteracionesArray.add(new IteracionSeidel(c, xs, es));
         }
         setIteraciones(c);
         return x;

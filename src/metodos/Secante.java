@@ -1,11 +1,16 @@
 package Metodos;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author _
  */
 public class Secante {
 
+    List<IteracionSecante> ArrayIteraciones = new ArrayList<>();
+    
     /**
      * Obtiene la raiz de una ecuacion dada
      *
@@ -21,14 +26,14 @@ public class Secante {
         int k = 0;
         double e = 100;
         while (e > error) {
+            k++;
             x2 = x1 - f.evaluate(x1) * (x1 - x0) / (f.evaluate(x1) - f.evaluate(x0));
             e = getErrorPorcentual(x1, x2);
             x0 = x1;
             x1 = x2;
-
+            System.out.println(e);
             System.out.println("x" + (k + 1) + " = " + x0);
             System.out.println("x" + (k + 2) + " = " + x1);
-            k++;
             System.out.println(k);
             System.out.println(x2);
         }
@@ -46,6 +51,10 @@ public class Secante {
     public double getErrorPorcentual(double p, double p2) {
         double error = Math.abs((p - p2) / p) * 100;
         return error;
+    }
+
+    public List<IteracionSecante> getArrayIteraciones() {
+        return ArrayIteraciones;
     }
 
 }
