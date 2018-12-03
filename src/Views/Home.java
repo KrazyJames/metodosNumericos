@@ -7,7 +7,7 @@ package Views;
 
 /**
  *
- * @author jimmy
+ * @author _
  */
 public class Home extends javax.swing.JFrame {
 
@@ -17,7 +17,10 @@ public class Home extends javax.swing.JFrame {
     public Home() {
         initComponents();
         this.setLocationRelativeTo(null);
+        
     }
+    
+    int xx, xy;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -39,14 +42,31 @@ public class Home extends javax.swing.JFrame {
         setUndecorated(true);
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(153, 0, 153));
+        jPanel1.setBackground(new java.awt.Color(102, 0, 102));
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel1MousePressed(evt);
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(51, 0, 51));
+        jPanel2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jPanel2MouseDragged(evt);
+            }
+        });
+        jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel2MousePressed(evt);
+            }
+        });
 
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Seleccione");
+        jLabel3.setText("Home");
 
         btnCerrar.setBackground(new java.awt.Color(153, 0, 0));
+        btnCerrar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnCerrar.setForeground(new java.awt.Color(255, 255, 255));
         btnCerrar.setText("X");
         btnCerrar.setBorder(null);
@@ -78,7 +98,8 @@ public class Home extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        btnMultiplicacion.setBackground(new java.awt.Color(51, 0, 153));
+        btnMultiplicacion.setBackground(new java.awt.Color(153, 0, 153));
+        btnMultiplicacion.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnMultiplicacion.setForeground(new java.awt.Color(255, 255, 255));
         btnMultiplicacion.setText("Multiplicación de matrices");
         btnMultiplicacion.setBorder(null);
@@ -89,7 +110,8 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        btnMenu.setBackground(new java.awt.Color(0, 51, 102));
+        btnMenu.setBackground(new java.awt.Color(153, 0, 153));
+        btnMenu.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnMenu.setForeground(new java.awt.Color(255, 255, 255));
         btnMenu.setText("Obtención de raíces");
         btnMenu.setBorder(null);
@@ -150,6 +172,23 @@ public class Home extends javax.swing.JFrame {
         new Menu().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnMenuActionPerformed
+
+    private void jPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MousePressed
+        
+        
+    }//GEN-LAST:event_jPanel1MousePressed
+
+    private void jPanel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MousePressed
+        //drager
+        xx = evt.getX();
+        xy = evt.getY();
+    }//GEN-LAST:event_jPanel2MousePressed
+
+    private void jPanel2MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseDragged
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xx, y - xy);
+    }//GEN-LAST:event_jPanel2MouseDragged
 
     /**
      * @param args the command line arguments

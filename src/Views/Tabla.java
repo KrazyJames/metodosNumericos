@@ -9,6 +9,7 @@ import Controllers.Controller;
 public class Tabla extends javax.swing.JFrame {
 
     private int m;
+    int xx, xy;
 
     /**
      * Creates new form tabla
@@ -21,19 +22,19 @@ public class Tabla extends javax.swing.JFrame {
     public void setMetodo(int m) {
         this.m = m;
         switch (m) {
-            case 0:{
+            case 0: {
                 this.lblTitulo.setText("Eliminación de Gauss");
                 break;
             }
-            case 1:{
+            case 1: {
                 this.lblTitulo.setText("Gauss Jordan");
                 break;
             }
-            case 2:{
+            case 2: {
                 this.lblTitulo.setText("Inversas (Determinantes)");
                 break;
             }
-            case 3:{
+            case 3: {
                 this.lblTitulo.setText("Gauss Seidel");
                 this.txtError.setEditable(true);
                 break;
@@ -108,7 +109,6 @@ public class Tabla extends javax.swing.JFrame {
         tblMatriz.setGridColor(new java.awt.Color(255, 255, 255));
         tblMatriz.setRowHeight(25);
         tblMatriz.setSelectionBackground(new java.awt.Color(102, 0, 102));
-        tblMatriz.setSelectionForeground(new java.awt.Color(255, 255, 255));
         tblMatriz.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(tblMatriz);
         if (tblMatriz.getColumnModel().getColumnCount() > 0) {
@@ -128,7 +128,6 @@ public class Tabla extends javax.swing.JFrame {
         txtError.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtError.setToolTipText("Disponible para Gauss Seidel");
         txtError.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(51, 0, 51)));
-        txtError.setSelectedTextColor(new java.awt.Color(255, 255, 255));
         txtError.setSelectionColor(new java.awt.Color(204, 0, 204));
         txtError.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -140,6 +139,16 @@ public class Tabla extends javax.swing.JFrame {
         lblPorcentaje.setText("%");
 
         jPanel2.setBackground(new java.awt.Color(51, 0, 51));
+        jPanel2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jPanel2MouseDragged(evt);
+            }
+        });
+        jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel2MousePressed(evt);
+            }
+        });
 
         lblTitulo.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
@@ -243,6 +252,15 @@ public class Tabla extends javax.swing.JFrame {
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnCerrarActionPerformed
+
+    private void jPanel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MousePressed
+        xx = evt.getX();
+        xy = evt.getY();
+    }//GEN-LAST:event_jPanel2MousePressed
+
+    private void jPanel2MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseDragged
+        
+    }//GEN-LAST:event_jPanel2MouseDragged
 
     /**
      * @param args the command line arguments
