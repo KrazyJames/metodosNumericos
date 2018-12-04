@@ -3,15 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/KJ/NetBeansProjects/metodosNumericos/src/Views/Multiplicacion.java</file>
             <file>file:/D:/KJ/NetBeansProjects/metodosNumericos/src/Metodos/Secante.java</file>
-            <file>file:/D:/KJ/NetBeansProjects/metodosNumericos/src/Controllers/ControllerSec.java</file>
-            <file>file:/D:/KJ/NetBeansProjects/metodosNumericos/src/Views/Tablas.java</file>
-            <file>file:/D:/KJ/NetBeansProjects/metodosNumericos/src/Controllers/Controller.java</file>
-            <file>file:/D:/KJ/NetBeansProjects/metodosNumericos/src/Views/Detalles.java</file>
-            <file>file:/D:/KJ/NetBeansProjects/metodosNumericos/src/Views/Home.java</file>
-            <file>file:/D:/KJ/NetBeansProjects/metodosNumericos/src/Controllers/ControllerMultiplicaciones.java</file>
+            <file>file:/D:/KJ/NetBeansProjects/metodosNumericos/src/Metodos/Gauss.java</file>
+            <file>file:/D:/KJ/NetBeansProjects/metodosNumericos/src/Metodos/Seidel.java</file>
+            <file>file:/D:/KJ/NetBeansProjects/metodosNumericos/src/Metodos/MinCuad.java</file>
+            <file>file:/D:/KJ/NetBeansProjects/metodosNumericos/src/Metodos/Inversa.java</file>
+            <file>file:/D:/KJ/NetBeansProjects/metodosNumericos/src/Metodos/IteracionSecante.java</file>
             <file>file:/D:/KJ/NetBeansProjects/metodosNumericos/test/tests/test.java</file>
+            <file>file:/D:/KJ/NetBeansProjects/metodosNumericos/src/Metodos/Funcion.java</file>
+            <file>file:/D:/KJ/NetBeansProjects/metodosNumericos/src/Metodos/IteracionSeidel.java</file>
+            <file>file:/D:/KJ/NetBeansProjects/metodosNumericos/src/Metodos/Jordan.java</file>
             <file>file:/D:/KJ/NetBeansProjects/metodosNumericos/src/Metodos/Multiplicacion.java</file>
         </group>
     </open-files>
