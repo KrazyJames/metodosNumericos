@@ -55,6 +55,14 @@ public class Controller {
         });
     }
 
+    /**
+     * Muestra el resultado del metodo
+     * @param tbl la tabla
+     * @param metodo el metodo
+     * @param error el error admitido
+     * @param titulo el titulo del frame
+     * @param detalles los detalles de la ejecucion del metodo
+     */
     public void mostrarResultado(JTable tbl, int metodo, String error, JLabel titulo, JTable detalles) {
         Resultado r = new Resultado();
         DefaultTableModel modeloT = (DefaultTableModel) tbl.getModel();
@@ -161,6 +169,12 @@ public class Controller {
 
     }
 
+    /**
+     * Crea un frame con tabla de los detalles de la ejecucion del metodo
+     * @param detalles la tabla
+     * @param s el metodo especial Seidel
+     * @param x el vector con la solucion
+     */
     public void verDetalles(JTable detalles, Seidel s, double[]x) {
         DefaultTableModel model = (DefaultTableModel) detalles.getModel();
         model.setNumRows(0);

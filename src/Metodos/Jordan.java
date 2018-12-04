@@ -11,7 +11,7 @@ public class Jordan {
     private static double[] sol;
     private static final double EPSILON = 1e-10;
     private boolean e = false;
-    
+
     /**
      *
      * @param A La matriz
@@ -193,30 +193,12 @@ public class Jordan {
             return true;
         }
     }
-//
-//    /**
-//     * Prueba si es factible antes de resolver
-//     *
-//     * @param A Matriz
-//     * @param b constantes
-//     */
-//    public static void probar(double[][] A, double[] b) {
-//        Jordan gj = new Jordan(A, b);
-//        if (gj.isFactible()) {
-//            System.out.println("Solucion para Ax=b");
-//            double[] x = gj.primal();
-//            for (int i = 0; i < x.length; i++) {
-//                sol[i] = x[i];
-//            }
-//        } else {
-//            System.out.println("Comprobación de infactibilidad");
-//            double[] y = gj.dual();
-//            for (int j = 0; j < y.length; j++) {
-//                System.out.println(" " + y[j] + "\n");
-//            }
-//        }
-//    }
 
+    /**
+     * Si contiene error
+     *
+     * @return el error
+     */
     public boolean hasError() {
         return e;
     }

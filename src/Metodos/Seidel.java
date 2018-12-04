@@ -12,6 +12,10 @@ public class Seidel {
     int iteraciones;
     List<IteracionSeidel> iteracionesArray = new ArrayList<>();
 
+    /**
+     * Historial de iteraciones
+     * @return 
+     */
     public List<IteracionSeidel> getArrayIteraciones(){
         return iteracionesArray;
     }
@@ -20,6 +24,10 @@ public class Seidel {
         this.iteraciones = i;
     }
 
+    /**
+     * 
+     * @return las iteraciones
+     */
     public int getIteraciones() {
         return iteraciones;
     }
@@ -112,7 +120,6 @@ public class Seidel {
             for (int i = 0; i < x.length; i++) {
                 z[i] = x[i];
             }
-//            imprimirIteracion(c, x, e);
             double[] xs = new double[x.length];
             double[] es = new double[e.length];
             for (int i = 0; i < xs.length; i++) {

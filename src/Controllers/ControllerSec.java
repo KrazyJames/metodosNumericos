@@ -34,6 +34,11 @@ public class ControllerSec {
         txtRaiz.setText(sol);
     }
 
+    /**
+     * Muestra los detalles de las iteraciones por secantes
+     *
+     * @param tblDetalle la tabla con las iteraciones
+     */
     public void mostrarDetalles(JTable tblDetalle) {
         List<IteracionSecante> iteraciones = secante.getArrayIteraciones();
         DefaultTableModel modelo = (DefaultTableModel) tblDetalle.getModel();

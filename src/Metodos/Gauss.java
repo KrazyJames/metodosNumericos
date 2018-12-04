@@ -9,6 +9,10 @@ public class Gauss {
     private static final double EPSILON = 1e-10;
     private boolean e = false;
 
+    /**
+     * Evalua si surgio un error
+     * @return el error
+     */
     public boolean hasError() {
         return e;
     }

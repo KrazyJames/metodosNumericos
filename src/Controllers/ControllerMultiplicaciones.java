@@ -10,12 +10,27 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ControllerMultiplicaciones {
 
+    /**
+     * Crea las tablas
+     * @param row1 numero de filas de la primera matriz
+     * @param col1 numero de columnas de la primera matriz
+     * @param row2 numero de filas de la segunda matriz
+     * @param col2 numero de columnas de la segunda matriz
+     * @param tbl1 la primer tabla
+     * @param tbl2 la segunda tabla
+     */
     public void crearTablas(int row1, int col1, int row2, int col2, JTable tbl1, JTable tbl2) {
         crearTabla(row1, col1, tbl1);
         crearTabla(row2, col2, tbl2);
 
     }
 
+    /**
+     * Crea una tabla con las dimensiones proporcionadas
+     * @param rows las filas
+     * @param cols las columnas
+     * @param tabla la tabla
+     */
     public void crearTabla(int rows, int cols, JTable tabla) {
         DefaultTableModel m = (DefaultTableModel) tabla.getModel();
         m.setNumRows(rows);
@@ -42,6 +57,12 @@ public class ControllerMultiplicaciones {
         });
     }
 
+    /**
+     * Multiplica las matrices 
+     * @param tbl1 la primera matriz
+     * @param tbl2 la segunda matriz
+     * @param tbl3 la matriz resultante
+     */
     public void multiplicarMatrices(JTable tbl1, JTable tbl2, JTable tbl3) {
         DefaultTableModel m1 = (DefaultTableModel) tbl1.getModel();
         DefaultTableModel m2 = (DefaultTableModel) tbl2.getModel();
@@ -60,6 +81,12 @@ public class ControllerMultiplicaciones {
 
     }
 
+    /**
+     * Rellena una matriz dada en m hacia A
+     * @param A la matriz
+     * @param m el modelo de la tabla
+     * @return la matriz
+     */
     public double[][] rellenarMatriz(double[][] A, DefaultTableModel m) {
         for (int i = 0; i < A.length; i++) {
             for (int j = 0; j < A[0].length; j++) {

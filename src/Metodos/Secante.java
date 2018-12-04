@@ -52,6 +52,10 @@ public class Secante {
         return error;
     }
 
+    /**
+     * Historial de iteraciones
+     * @return las iteraciones
+     */
     public List<IteracionSecante> getArrayIteraciones() {
         return ArrayIteraciones;
     }
