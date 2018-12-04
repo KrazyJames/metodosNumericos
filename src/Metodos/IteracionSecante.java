@@ -4,7 +4,7 @@ package Metodos;
  *
  * @author _
  */
-class IteracionSecante {
+public class IteracionSecante {
     
     private int iteracion;
     private double x;

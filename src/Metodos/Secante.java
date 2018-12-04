@@ -28,14 +28,13 @@ public class Secante {
         while (e > error) {
             k++;
             x2 = x1 - f.evaluate(x1) * (x1 - x0) / (f.evaluate(x1) - f.evaluate(x0));
-            e = getErrorPorcentual(x1, x2);
+            e = getErrorPorcentual(x2, x1);
             x0 = x1;
             x1 = x2;
-            System.out.println(e);
-            System.out.println("x" + (k + 1) + " = " + x0);
-            System.out.println("x" + (k + 2) + " = " + x1);
-            System.out.println(k);
-            System.out.println(x2);
+            System.out.println("Iteracion: "+k);
+            System.out.println("X"+k+" :"+x2);
+            System.out.println("Error: "+e);
+            ArrayIteraciones.add(new IteracionSecante(k,x2,e));
         }
         raiz = x2;
         return raiz;

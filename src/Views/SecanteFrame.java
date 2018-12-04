@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 public class SecanteFrame extends javax.swing.JFrame {
 
     ControllerSec cs = new ControllerSec();
+    int xx,xy;
     /**
      * Creates new form SecanteFrame
      */
@@ -55,6 +56,16 @@ public class SecanteFrame extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(102, 0, 102));
 
         jPanel2.setBackground(new java.awt.Color(51, 0, 51));
+        jPanel2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jPanel2MouseDragged(evt);
+            }
+        });
+        jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel2MousePressed(evt);
+            }
+        });
 
         lblTitulo.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
@@ -265,12 +276,11 @@ public class SecanteFrame extends javax.swing.JFrame {
                 this.txtRaiz.setVisible(true);
                 this.lblRaiz.setVisible(true);
             } else {
-                JOptionPane.showMessageDialog(null, "Inserte una ecuacion", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Inserte una ecuación", "Aviso", JOptionPane.INFORMATION_MESSAGE);
             }
         } catch (HeadlessException | NumberFormatException e) {
             System.out.println(e.getMessage());
         }
-
     }//GEN-LAST:event_btnCalcularActionPerformed
 
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
@@ -286,6 +296,17 @@ public class SecanteFrame extends javax.swing.JFrame {
         cs.mostrarDetalles(d.tblDetalle);
         d.setVisible(true);
     }//GEN-LAST:event_btnVerMasActionPerformed
+
+    private void jPanel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MousePressed
+        xx = evt.getX();
+        xy = evt.getY();
+    }//GEN-LAST:event_jPanel2MousePressed
+
+    private void jPanel2MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseDragged
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xx, y - xy);
+    }//GEN-LAST:event_jPanel2MouseDragged
 
     /**
      * @param args the command line arguments
