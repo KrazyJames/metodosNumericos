@@ -65,6 +65,7 @@ public class Controller {
      */
     public void mostrarResultado(JTable tbl, int metodo, String error, JLabel titulo, JTable detalles) {
         Resultado r = new Resultado();
+        r.btnVerMas.setEnabled(false);
         DefaultTableModel modeloT = (DefaultTableModel) tbl.getModel();
         DefaultListModel modelo = new DefaultListModel();
         int n = tbl.getModel().getRowCount();
@@ -152,6 +153,7 @@ public class Controller {
                         }
                         r.setDetalles(s, x);
                         r.listResultados.setModel(modelo);
+                        r.btnVerMas.setEnabled(true);
                         r.setVisible(true);
                     } else {
                         JOptionPane.showMessageDialog(null, "Podria no tener convergencia\n Asegurese que sea diagonal dominante o pruebe con otra.", "Informacion", JOptionPane.INFORMATION_MESSAGE);

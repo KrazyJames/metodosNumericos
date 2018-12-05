@@ -147,6 +147,7 @@ public class SecanteFrame extends javax.swing.JFrame {
         });
 
         txtEcuacion.setBackground(new java.awt.Color(153, 0, 153));
+        txtEcuacion.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         txtEcuacion.setForeground(new java.awt.Color(255, 255, 255));
         txtEcuacion.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtEcuacion.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(51, 0, 51)));

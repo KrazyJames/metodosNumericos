@@ -71,6 +71,7 @@ public class Resultado extends javax.swing.JFrame {
         btnVerMas.setBackground(new java.awt.Color(0, 153, 0));
         btnVerMas.setForeground(new java.awt.Color(255, 255, 255));
         btnVerMas.setText("Ver más");
+        btnVerMas.setToolTipText("Disponible para metodos: Seidel");
         btnVerMas.setBorder(null);
         btnVerMas.setBorderPainted(false);
         btnVerMas.addActionListener(new java.awt.event.ActionListener() {
@@ -225,7 +226,7 @@ public class Resultado extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCerrar1;
-    private javax.swing.JButton btnVerMas;
+    public javax.swing.JButton btnVerMas;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;

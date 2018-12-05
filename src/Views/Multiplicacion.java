@@ -231,6 +231,7 @@ public class Multiplicacion extends javax.swing.JFrame {
             Tablas t = new Tablas();
             m.crearTablas(this.cbxSizeRow1.getSelectedIndex() + 2, this.cbxSizeCol1.getSelectedIndex() + 2, this.cbxSizeRow2.getSelectedIndex() + 2, this.cbxSizeCol2.getSelectedIndex() + 2, t.tbl1, t.tbl2);
             t.setVisible(true);
+            this.dispose();
         }
     }//GEN-LAST:event_btnAceptarActionPerformed
 
