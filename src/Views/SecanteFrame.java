@@ -11,7 +11,8 @@ import javax.swing.JOptionPane;
 public class SecanteFrame extends javax.swing.JFrame {
 
     ControllerSec cs = new ControllerSec();
-    int xx,xy;
+    int xx, xy;
+
     /**
      * Creates new form SecanteFrame
      */
@@ -273,9 +274,14 @@ public class SecanteFrame extends javax.swing.JFrame {
     private void btnCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularActionPerformed
         try {
             if (!txtEcuacion.getText().isEmpty()) {
-                cs.solve(this.txtEcuacion.getText(), this.txtRaiz, Double.parseDouble(this.txtIntervalo0.getText()), Double.parseDouble(this.txtIntervalo1.getText()), Double.parseDouble(this.txtError.getText()));
-                this.txtRaiz.setVisible(true);
-                this.lblRaiz.setVisible(true);
+                try {
+                    cs.solve(this.txtEcuacion.getText(), this.txtRaiz, Double.parseDouble(this.txtIntervalo0.getText()), Double.parseDouble(this.txtIntervalo1.getText()), Double.parseDouble(this.txtError.getText()));
+                    this.txtRaiz.setVisible(true);
+                    this.lblRaiz.setVisible(true);
+                } catch (NumberFormatException e) {
+                    System.out.println(e.getMessage());
+                    JOptionPane.showMessageDialog(null, "Revise si:\n1. Es una ecuación valida\n2. El intervalo es correcto o existe\n3. El error existe o se encuentra dentro de 0-100 %", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+                }
             } else {
                 JOptionPane.showMessageDialog(null, "Inserte una ecuación", "Aviso", JOptionPane.INFORMATION_MESSAGE);
             }
